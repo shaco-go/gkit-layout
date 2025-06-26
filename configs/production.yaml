@@ -1,0 +1,8 @@
+env: production
+log_level: info
+database:
+  host: 
+  port: 
+  username: 
+  password: 
+  db_name:
