@@ -20,7 +20,6 @@ func InitCache() *cache.Cache {
 	c, err := cache.New(op...)
 	if err != nil {
 		panic(fmt.Errorf("cache init fail :%w", err))
-		return nil
 	}
 	return &c
 }
