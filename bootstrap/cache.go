@@ -1,0 +1,26 @@
+package bootstrap
+
+import (
+	"fmt"
+	"github.com/shaco-go/gkit-layout/global"
+	"github.com/shaco-go/gkit-layout/pkg/cache"
+)
+
+// InitCache 初始化缓存
+func InitCache() *cache.Cache {
+	var op = []cache.Option{
+		cache.WithKeyPrefix(global.Conf.AppName + ":"),
+		cache.WithLockPrefix(global.Conf.AppName + ":lock:"),
+	}
+	if global.Redis == nil {
+		op = append(op, cache.WithMemory())
+	} else {
+		op = append(op, cache.WithRedis(global.Redis))
+	}
+	c, err := cache.New(op...)
+	if err != nil {
+		panic(fmt.Errorf("cache init fail :%w", err))
+		return nil
+	}
+	return &c
+}

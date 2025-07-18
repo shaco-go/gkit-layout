@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/rs/zerolog"
 	"github.com/shaco-go/gkit-layout/configs"
+	"github.com/shaco-go/gkit-layout/global"
 	gkit_gorm "github.com/shaco-go/gkit-layout/pkg/gorm"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -28,7 +29,7 @@ func InitMysql(dev bool, conf configs.Mysql, zl zerolog.Logger) *gorm.DB {
 	db, err := gorm.Open(mysql.Open(dsn.String()), &gorm.Config{
 		Logger: gkit_gorm.NewLog(logConf, zl),
 	})
-	if err != nil {
+	if err != nil && !global.Conf.IsDev() {
 		panic(fmt.Errorf("初始化数据库失败:%w", err))
 	}
 	return db

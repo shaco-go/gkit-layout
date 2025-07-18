@@ -1,4 +1,5 @@
 env: test
+app_name: app
 log_level: debug
 database:
   host: 
@@ -6,3 +7,9 @@ database:
   username: 
   password: 
   db_name:
+
+redis:
+  host: "127.0.0.1"    # Redis服务器地址
+  port: 6379           # Redis端口号
+  password: ""         # Redis密码（如果没有可以留空）
+  db: 0                # 使用的Redis数据库编号，默认0
