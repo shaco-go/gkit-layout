@@ -3,12 +3,18 @@ package configs
 import "strings"
 
 type Config struct {
-	Env      string `mapstructure:"env"`       // 环境
-	AppName  string `mapstructure:"app_name"`  // 应用名称
-	LogLevel string `mapstructure:"log_level"` // 日志等级
-	Database Mysql  `mapstructure:"database"`  // 数据库
-	Cache    string `mapstructure:"cache"`     // 缓存类型
-	Redis    Redis  `mapstructure:"redis"`     // redis
+	Env      string `mapstructure:"env"`      // 环境
+	AppName  string `mapstructure:"app_name"` // 应用名称
+	Database Mysql  `mapstructure:"database"` // 数据库
+	Cache    string `mapstructure:"cache"`    // 缓存类型
+	Redis    Redis  `mapstructure:"redis"`    // redis
+	Log      Log    `mapstructure:"log"`      // 日志配置
+}
+
+type Log struct {
+	Channel       []string `mapstructure:"channel"`
+	LogLevel      string   `mapstructure:"log_level"`      // 日志等级 info一下模式可打印sql
+	HumanReadable bool     `mapstructure:"human_readable"` // 是否使用可读格式
 }
 
 type Mysql struct {

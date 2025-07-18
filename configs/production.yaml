@@ -1,6 +1,10 @@
 env: production
 app_name: app
-log_level: info
+cache: redis
+log:
+  channel: ["file", "console"]
+  log_level: info
+  human_readable: false
 database:
   host: 
   port: 

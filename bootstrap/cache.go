@@ -12,10 +12,10 @@ func InitCache() *cache.Cache {
 		cache.WithKeyPrefix(global.Conf.AppName + ":"),
 		cache.WithLockPrefix(global.Conf.AppName + ":lock:"),
 	}
-	if global.Redis == nil {
-		op = append(op, cache.WithMemory())
-	} else {
+	if global.Conf.Cache == "redis" {
 		op = append(op, cache.WithRedis(global.Redis))
+	} else {
+		op = append(op, cache.WithMemory())
 	}
 	c, err := cache.New(op...)
 	if err != nil {

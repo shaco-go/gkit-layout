@@ -1,6 +1,10 @@
 env: test
 app_name: app
-log_level: debug
+cache: redis
+log:
+  channel: ["file", "console"]
+  log_level: debug
+  human_readable: true
 database:
   host: 
   port: 

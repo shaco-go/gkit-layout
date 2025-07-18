@@ -1,12 +1,16 @@
 env: development
 app_name: app
-log_level: trace
+cache: memory
+log:
+  channel: ["file", "console"]
+  log_level: trace
+  human_readable: true
 database:
-  host: localhost
+  host: 132.232.152.120
   port: 3306
-  username: root
-  password: 123456
-  db_name:
+  username: test
+  password: T2GG8xy8RnMXte3N
+  db_name: test
 redis:
   host: "127.0.0.1"    # Redis服务器地址
   port: 6379           # Redis端口号
